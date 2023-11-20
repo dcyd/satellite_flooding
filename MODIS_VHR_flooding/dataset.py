@@ -38,7 +38,7 @@ A .csv file with table column title as pre_modis post_modis pre_vhr post_vhr bui
 5. Generate a .csv file with the matched file path of modis, vhr, and mask
 '''
 
-def get_masks_to_cover(given_region, mask_size):
+def get_masks_to_cover(given_region, mask_size = 2):
     ''' for a given region, return a serious smaller masks to cover the region.
     Input: given_region (xx), mask_size (km)
     Output: a serious of [left, top, right, bottom]
@@ -61,8 +61,8 @@ def get_masks_to_cover(given_region, mask_size):
         for lat in latitudes:
             left = lon
             top = lat
-            right = left + reso+xsize
-            bottom = top - reso+xsize
+            right = left + xsize
+            bottom = top - ysize
             masks_list.append([left, top, right, bottom])
 
     return masks_list
@@ -105,15 +105,15 @@ def download_modis_given_region_date(mask_geo, date_range, save_path, filename):
     modis_swir_b1b2 = one_modis_ima.map(b1b2_swir_clip)
     geemap.download_ee_image_collection(modis_swir_b1b2, 
                                         out_dir=save_path, 
-                                        filenames=[filename],
+                                        filenames=['buffer.tif'],
                                         crs="EPSG:4326")
 
-    one_modis_path = os.path.join(save_path, filename)
+    one_modis_path = os.path.join(save_path, 'buffer.tif')
 
     modis_ds = gdal.Open(one_modis_path, gdal.GA_ReadOnly)
     projection = modis_ds.GetProjection() # 获取投影信息
 
-    modis_ds_up = gdal.Translate(one_modis_path, modis_ds, 
+    modis_ds_up = gdal.Translate(os.path.join(save_path, filename), modis_ds, 
                             projWin=[left, top, right, bottom], 
                             xRes=0.0001, yRes=0.0001,
                             outputSRS=projection)
@@ -210,27 +210,6 @@ def create_mask():
     '''
 
 
-def write_csv(images, masks, idxs, out_csv_filename):
-    '''
-    '''
-    print(f"writing out csv: {out_csv_filename}")
-    outfile = open(out_csv_filename, "w")
-    header = "preimg,postimg,flood,building,road,roadspeed\n"
-    outfile.write(header)
-    for i in idxs:
-        line = images[0][i]
-        for j in range(1, len(images)):
-            line += ","+images[j][i]
-        for j in range(len(masks)):
-            if len(masks[j])!=0:
-                line += ","+masks[j][i]
-            else:
-                line+=","
-        line+="\n"
-        outfile.write(line)
-    outfile.close()
-
-
 def generate_train_val(root_path, spacenet_csv_path, csv_path):
     ''' generate the train and validation data and .csv
 
@@ -241,10 +220,6 @@ def generate_train_val(root_path, spacenet_csv_path, csv_path):
     # download modis imagerys and return the modis list
     pre_modis_list, post_modis_list = get_modis(pre_vhr_list,root_path)
 
- 
-
-
-    
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -261,29 +236,121 @@ def parse_args():
     args = parser.parse_args()
     return args
 
-if __name__ == "__main__":
 
-    args = parse_args()
-    root_path = args.root_path
-    spacenet_csv_path = args.spacenet_csv_path
-    csv_path = args.csv_path
+def identify_overlap(tif_path_1, tif_path_2):
+    '''identify the overlap region for two given .tif file
+    output: [left top right bottom]
+    '''
+    # tif_path_1 = "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Pre\\20180701_104001003E791C00.tif"
+    # tif_path_2 = "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Post\\20210718_10500500E6DD3C00.tif"
 
-
-    ##### train val split as random
-    # image_dirs = [os.path.join(root_dir, n) for n in aois]
-    # make_train_val_csvs(image_dirs, os.path.join(out_dir, out_csv_basename), val_percent=val_percent)
-    # generate_train_val(root_path, spacenet_csv_path, csv_path)
-    
-    
-
-    one_vhr_path = "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Post\\20210718_10500500E6DD3C00.tif"
     # Open .tif
-    dataset = gdal.Open(one_vhr_path)
+    tif_1 = gdal.Open(tif_path_1)
+    geotransform_1 = tif_1.GetGeoTransform()
+    left_1 = geotransform_1[0]
+    top_1 = geotransform_1[3]
+    right_1 = left_1 + geotransform_1[1] * tif_1.RasterXSize
+    bottom_1 = top_1 + geotransform_1[5] * tif_1.RasterYSize
 
-    # get the geo range
-    geotransform = dataset.GetGeoTransform()
-    left = geotransform[0]
-    top = geotransform[3]
-    right = left + geotransform[1] * dataset.RasterXSize
-    bottom = top + geotransform[5] * dataset.RasterYSize
-    get_masks_to_cover(geotransform, 2)
+    tif_2 = gdal.Open(tif_path_2)
+    geotransform_2 = tif_2.GetGeoTransform()
+    left_2 = geotransform_2[0]
+    top_2 = geotransform_2[3]
+    right_2 = left_2 + geotransform_2[1] * tif_2.RasterXSize
+    bottom_2 = top_2 + geotransform_2[5] * tif_2.RasterYSize
+
+    left = max(left_1,left_2)
+    top = min(top_1,top_2)
+
+    right = min(right_1,right_2)
+    bottom = max(bottom_1,bottom_2)
+
+    # print([left_1, top_1, right_1, bottom_1])
+    # print([left_2, top_2, right_2, bottom_2])
+    # print([left, top, right, bottom])
+    # print()
+
+    if (left<right) and (top>bottom):
+        return [left, top, right, bottom]
+    else:
+        return []
+
+def write_csv(images, out_csv_filename):
+    print(f"writing out csv: {out_csv_filename}")
+    outfile = open(out_csv_filename, "w")
+    header = "pre_vhr,post_vhr,pre_modis,post_modis\n"
+    outfile.write(header)
+    for i in range(len(images[0])):
+        line = images[0][i]
+        for j in range(1, len(images)):
+            line += ","+images[j][i]
+        line+="\n"
+        outfile.write(line)
+    outfile.close()
+
+
+if __name__ == "__main__":
+    # for germany
+    pre_vhrs = ["E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Pre\\20180701_104001003E791C00.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Pre\\20210211_10500500C4DD7000.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Pre\\20210211_10500500C4DD7100.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Pre\\20210711_10200100B49A4000.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Pre\\20210711_10200100B396B200.tif",]
+    post_vhrs = ["E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Post\\20210718_10500500E6DD3C00.tif",
+                 "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Post\\20210721_1040050035DC3B00.tif"]
+    
+    root_path = "E:\\code\\Py_workplace\\satellite_flooding\\train_val_data\\Germany"
+
+    pre_vhr_lists = []
+    post_vhr_lists = []
+    pre_modis_lists = []
+    post_modis_lists = []
+
+    # Cut vhr and download modis, and save the path to .csv
+    for pre_vhr in pre_vhrs:
+        for post_vhr in post_vhrs:
+            overlap_region = identify_overlap(pre_vhr, post_vhr)
+            if len(overlap_region)!=0:
+                mask_list = get_masks_to_cover(overlap_region, mask_size = 2)
+                _, pre_file_name = os.path.split(pre_vhr)
+                pre_file_name, ext = os.path.splitext(pre_file_name)
+                post_vhr_root_path = os.path.join(root_path, "post_vhr")
+                pre_vhr_root_path = os.path.join(root_path, "pre_vhr")
+                post_modis_root_path = os.path.join(root_path, "post_modis")
+                pre_modis_root_path = os.path.join(root_path, "pre_modis")
+
+                pre_vhr_ds = gdal.Open(pre_vhr, gdal.GA_ReadOnly)
+                post_vhr_ds = gdal.Open(post_vhr, gdal.GA_ReadOnly)
+
+                _, pre_daterange = get_vhr_reg_date(pre_vhr)
+                _, post_daterange = get_vhr_reg_date(post_vhr)
+
+                tag = 0
+                for one_mask in mask_list:
+                    file_name = pre_file_name+"_"+str(tag)+".tif"
+                    tag = tag+1
+                    # cut vhr
+                    if not os.path.exists(os.path.join(pre_vhr_root_path,file_name)):
+                        cut_vhr_given_region(pre_vhr_ds, one_mask, os.path.join(pre_vhr_root_path,file_name))
+
+                    if not os.path.exists(os.path.join(post_vhr_root_path,file_name)):
+                        cut_vhr_given_region(post_vhr_ds, one_mask, os.path.join(post_vhr_root_path,file_name))
+
+                    # download modis
+
+                    if not os.path.exists(os.path.join(pre_modis_root_path,file_name)):
+                        download_modis_given_region_date(one_mask, pre_daterange, pre_modis_root_path, file_name)
+                    if not os.path.exists(os.path.join(post_modis_root_path,file_name)):
+                        download_modis_given_region_date(one_mask, post_daterange, post_modis_root_path, file_name)
+
+                    pre_vhr_lists.append(os.path.join(pre_vhr_root_path,file_name))
+                    post_vhr_lists.append(os.path.join(post_vhr_root_path,file_name))
+                    pre_modis_lists.append(os.path.join(pre_modis_root_path,file_name))
+                    post_modis_lists.append(os.path.join(post_modis_root_path,file_name))
+
+                pre_vhr_ds = None
+                post_vhr_ds = None
+
+    # all_images = [[],[]]
+    all_images = [pre_vhr_lists,post_vhr_lists,pre_modis_lists,post_modis_lists]
+    write_csv(all_images, os.path.join(root_path, "germany.csv"))

@@ -11,7 +11,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": false,
-            "args": ["--root_path", "E:\\code\\Py_workplace\\spacenet8\\Data","--spacenet_csv_path", "E:\\code\\Py_workplace\\spacenet8\\Data\\train_val_csv","--csv_path", "E:\\code\\Py_workplace\\spacenet8\\Data"]
+            // "args": ["--root_path", "E:\\code\\Py_workplace\\spacenet8\\Data","--spacenet_csv_path", "E:\\code\\Py_workplace\\spacenet8\\Data\\train_val_csv","--csv_path", "E:\\code\\Py_workplace\\spacenet8\\Data"]
         }
     ]
 }
