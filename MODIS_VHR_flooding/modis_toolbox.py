@@ -188,5 +188,5 @@ def get_modis_terra_aqua(roi_bounds, date_range):
     modis_terra_aqua = ee.ImageCollection(terra_final.merge(aqua_final)\
                                 .sort("system:time_start", True))
     
-    return modis_terra_aqua
+    return modis_terra_aqua, terra_final, aqua_final
 
