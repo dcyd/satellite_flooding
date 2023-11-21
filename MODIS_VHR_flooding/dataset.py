@@ -91,10 +91,15 @@ def download_modis_given_region_date(mask_geo, date_range, save_path, filename):
 
     left, top, right, bottom = mask_geo
     # geometry, date_range = get_vhr_reg_date(one_vhr_path)
-    geometry = ee.Geometry.Polygon([[left, bottom],
-                            [left, top],
+    # geometry = ee.Geometry.Polygon([[left-0.1, top+0.1],
+    #                         [right+0.1, top+0.1],
+    #                         [right+0.1, bottom-0.1],
+    #                         [left-0.1, bottom-0.1]],proj="EPSG:4326") # the proj is determinted in QGIS
+
+    geometry = ee.Geometry.Polygon([[right, bottom],
                             [right, top],
-                            [right, bottom]],proj="EPSG:4326") # the proj is determinted in QGIS
+                            [left, top],           
+                            [left, bottom]],proj="EPSG:4326") # the proj is determinted in QGIS
 
     _, one_modis_ima, _ = mod_tol.get_modis_terra_aqua(geometry, ee.DateRange(date_range[0], date_range[1]))      
     
@@ -105,6 +110,7 @@ def download_modis_given_region_date(mask_geo, date_range, save_path, filename):
     modis_swir_b1b2 = one_modis_ima.map(b1b2_swir_clip)
     geemap.download_ee_image_collection(modis_swir_b1b2, 
                                         out_dir=save_path, 
+                                        region=geometry,
                                         filenames=['buffer.tif'],
                                         crs="EPSG:4326")
 
@@ -114,15 +120,37 @@ def download_modis_given_region_date(mask_geo, date_range, save_path, filename):
     projection = modis_ds.GetProjection() # 获取投影信息
 
     modis_ds_up = gdal.Translate(os.path.join(save_path, filename), modis_ds, 
-                            projWin=[left, top, right, bottom], 
-                            xRes=0.0001, yRes=0.0001,
-                            outputSRS=projection)
-
-    # print(modis_ds_up.RasterXSize)
-    # print(modis_ds_up.RasterYSize)
-    # modis_ds_up.GetGeoTransform()
-    modis_ds_up = None
+                        projWin=[left, top, right, bottom], 
+                        xRes=0.0001, yRes=0.0001,
+                        outputSRS=projection)
+    if modis_ds_up is None:
+        print("turn over top and bottom, and try to download again")
+        modis_ds_up = gdal.Translate(os.path.join(save_path, filename), modis_ds, 
+                    projWin=[left, bottom, right, top], 
+                    xRes=0.0001, yRes=0.0001,
+                    outputSRS=projection)
+        
     modis_ds = None
+
+    if modis_ds_up is None:
+        return False
+    else:
+        modis_ds_up = None
+        return True
+        
+# try:
+#     可能出错的地方
+# except BaseException as e：
+#     print(e)
+# else:
+#     没有错误时要执行代码
+# finally：
+#     不管有没有错误都要执行的代码
+
+# print(modis_ds_up.RasterXSize)
+# print(modis_ds_up.RasterYSize)
+# modis_ds_up.GetGeoTransform()
+    
 
 def get_vhr_list(spacenet_csv_path, is_train):
     '''extract the VHR image list
@@ -291,15 +319,52 @@ def write_csv(images, out_csv_filename):
 
 if __name__ == "__main__":
     # for germany
-    pre_vhrs = ["E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Pre\\20180701_104001003E791C00.tif",
-                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Pre\\20210211_10500500C4DD7000.tif",
-                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Pre\\20210211_10500500C4DD7100.tif",
-                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Pre\\20210711_10200100B49A4000.tif",
-                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Pre\\20210711_10200100B396B200.tif",]
-    post_vhrs = ["E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Post\\20210718_10500500E6DD3C00.tif",
-                 "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Post\\20210721_1040050035DC3B00.tif"]
+    # pre_vhrs = ["E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Pre\\20180701_104001003E791C00.tif",
+    #             "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Pre\\20210211_10500500C4DD7000.tif",
+    #             "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Pre\\20210211_10500500C4DD7100.tif",
+    #             "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Pre\\20210711_10200100B49A4000.tif",
+    #             "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Pre\\20210711_10200100B396B200.tif",]
+    # post_vhrs = ["E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Post\\20210718_10500500E6DD3C00.tif",
+    #              "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Germany\\Post\\20210721_1040050035DC3B00.tif"]
     
-    root_path = "E:\\code\\Py_workplace\\satellite_flooding\\train_val_data\\Germany"
+    # root_path = "E:\\code\\Py_workplace\\satellite_flooding\\train_val_data\\Germany"
+
+    # for Louisiana
+    pre_vhrs = ["E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20210103_104001006504F400.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20191023_1050010019602400.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20201029_10300100B07DF800.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20200620_105001001E0A3300.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20210421_10400100684A4B00.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20210514_10500100244DA100.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20201122_10300100AF395C00.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20200221_105001001B76D700.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20201122_10300100B058C700.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20210727_10300100C3374500.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20200617_105001001DD56B00.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20200109_10400100568CE100.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20210129_10300100B4D31D00.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20210113_10300100B3863900.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20210129_10300100B3414E00.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20210105_1050010021BB3200.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20191128_105001001A0FFC00.tif",
+                "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Pre\\20210107_10300100B5827200.tif",]
+    
+
+    post_vhrs = ["E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Post\\20210911_10300100C540A500.tif",
+                 "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Post\\20210911_10300100C57EC700.tif",
+                 "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Post\\20210831_10300100C46F5900.tif",
+                 "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Post\\20210831_10300100C4171800.tif",
+                 "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Post\\20210831_10300100C5474600.tif",
+                 "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Post\\20210905_10300100C52CAD00.tif",
+                 "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Post\\20210831_10300100C459C000.tif",
+                 "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Post\\20210831_10300100C5735600.tif",
+                 "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Post\\20210831_1050010026B2FD00.tif",
+                 "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Post\\20210831_10300100C4AB0300.tif",
+                 "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Post\\20210831_1050010026B2FC00.tif",
+                 "E:\\code\\Py_workplace\\satellite_flooding\\Data\\Louisiana\\Post\\20210831_10300100C51FE500.tif",]
+    
+    root_path = "E:\\code\\Py_workplace\\satellite_flooding\\train_val_data\\Louisiana"
+
 
     pre_vhr_lists = []
     post_vhr_lists = []
@@ -307,13 +372,15 @@ if __name__ == "__main__":
     post_modis_lists = []
 
     # Cut vhr and download modis, and save the path to .csv
-    for pre_vhr in pre_vhrs:
-        for post_vhr in post_vhrs:
+    for post_vhr in post_vhrs:
+        print(post_vhr)
+        for pre_vhr in pre_vhrs:
+            print(pre_vhr)
             overlap_region = identify_overlap(pre_vhr, post_vhr)
             if len(overlap_region)!=0:
                 mask_list = get_masks_to_cover(overlap_region, mask_size = 2)
                 _, pre_file_name = os.path.split(pre_vhr)
-                pre_file_name, ext = os.path.splitext(pre_file_name)
+                pre_file_name, _ = os.path.splitext(pre_file_name)
                 post_vhr_root_path = os.path.join(root_path, "post_vhr")
                 pre_vhr_root_path = os.path.join(root_path, "pre_vhr")
                 post_modis_root_path = os.path.join(root_path, "post_modis")
@@ -326,6 +393,7 @@ if __name__ == "__main__":
                 _, post_daterange = get_vhr_reg_date(post_vhr)
 
                 tag = 0
+                print("cutting vhr and downloading modis")
                 for one_mask in mask_list:
                     file_name = pre_file_name+"_"+str(tag)+".tif"
                     tag = tag+1

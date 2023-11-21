@@ -1,0 +1,10 @@
+<PAMDataset>
+  <PAMRasterBand band="1">
+    <Description>swir</Description>
+    <NoDataValue le_hex_equiv="000000000000F87F">nan</NoDataValue>
+  </PAMRasterBand>
+  <PAMRasterBand band="2">
+    <Description>b1b2_ratio</Description>
+    <NoDataValue le_hex_equiv="000000000000F87F">nan</NoDataValue>
+  </PAMRasterBand>
+</PAMDataset>
