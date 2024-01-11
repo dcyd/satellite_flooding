@@ -15858,3 +15858,270 @@ train_val_data/Louisiana/pre_vhr/20210727_10300100C3374500_295.tif
 train_val_data/Louisiana/pre_vhr/20210727_10300100C3374500_295.tif.msk
 train_val_data/Louisiana/pre_vhr/20210727_10300100C3374500_296.tif
 train_val_data/Louisiana/pre_vhr/20210727_10300100C3374500_296.tif.msk
+Data/2000-2022年中国各省经济指标-国家统计局-补足缺失.xlsx
+Data/bgd_gdf.tif
+Data/bgd_gdf.tif.aux.xml
+Data/bgd2013incpov.tif
+Data/bgd2013incpov.tif.aux.xml
+Data/gsap-maps.zip
+Data/high_res_population.tif
+Data/high_res_population.tif.aux.xml
+Data/india_RWI.tif
+Data/india_RWI.tif.aux.xml
+Data/Readme.md
+Data/relative-wealth-index-april-2021.zip
+Data/EM-DAT/data立方.txt
+Data/EM-DAT/EM_DAT_Duration.mat
+Data/EM-DAT/EM-DAT-China_flood_with_geo.xlsx
+Data/EM-DAT/EM-DAT-Duration.xlsx
+Data/EM-DAT/EMDAT_world_duration.xlsx
+Data/EM-DAT/public_emdat_custom_request_2023-12-11_ec7ff916-7dcf-44ff-9929-3a8aa3fe7bbe.xlsx
+Data/EM-DAT/public_emdat_custom_request_2023-12-24_8253b678-5268-4d3b-aeeb-2ca0abad5031.xlsx
+Data/GFD/DFO_2248_From_20030611_to_20031010.zip
+Data/GFD/DFO_4444_From_20170216_to_20170303.zip
+Data/GFD/DFO_FloodArchive.xlsx
+Data/GFD/GFD_2004_b.tif
+Data/GFD/GFD_2004_b.tif.aux.xml
+Data/GFD/GFD_2004_Bangladesh.tif
+Data/GFD/GFD_2004_Bangladesh.tif.aux.xml
+Data/GFD/gfd_bgd.tif
+Data/GFD/gfd_bgd.tif.aux.xml
+Data/GFD/Readme.md
+Data/GFD/DFO_2248_From_20030611_to_20031010/DFO_2248_From_20030611_to_20031010.tif
+Data/GFD/DFO_2248_From_20030611_to_20031010/DFO_2248_From_20030611_to_20031010.tif.aux.xml
+Data/GFD/DFO_2248_From_20030611_to_20031010/DFO_2248_properties.json
+Data/GFD/DFO_2248_From_20030611_to_20031010/LICENSE.txt
+Data/GFD/DFO_2248_From_20030611_to_20031010/README_GFD.pdf
+Data/GFD/DFO_2507_From_20040620_to_20041007/DFO_2507_From_20040620_to_20041007.tif
+Data/GFD/DFO_2507_From_20040620_to_20041007/DFO_2507_From_20040620_to_20041007.tif.aux.xml
+Data/GFD/DFO_2507_From_20040620_to_20041007/DFO_2507_properties.json
+Data/GFD/DFO_2507_From_20040620_to_20041007/LICENSE.txt
+Data/GFD/DFO_2507_From_20040620_to_20041007/README_GFD.pdf
+Data/GFD/DFO_4444_From_20170216_to_20170303/DFO_4444_From_20170216_to_20170303.tif
+Data/GFD/DFO_4444_From_20170216_to_20170303/DFO_4444_From_20170216_to_20170303.tif.aux.xml
+Data/GFD/DFO_4444_From_20170216_to_20170303/DFO_4444_properties.json
+Data/GFD/DFO_4444_From_20170216_to_20170303/LICENSE.txt
+Data/GFD/DFO_4444_From_20170216_to_20170303/README_GFD.pdf
+Data/GFD/US_census_track/census_track_GFD_DFO4444.cpg
+Data/GFD/US_census_track/census_track_GFD_DFO4444.dbf
+Data/GFD/US_census_track/census_track_GFD_DFO4444.qmd
+Data/GFD/US_census_track/census_track_GFD_DFO4444.shp
+Data/GFD/US_census_track/census_track_GFD_DFO4444.shx
+Data/GFD/US_census_track/census_track_GFD_DFO4444.xlsx
+Data/GFD/US_census_track/census_track_pop_dura_sum.cpg
+Data/GFD/US_census_track/census_track_pop_dura_sum.dbf
+Data/GFD/US_census_track/census_track_pop_dura_sum.prj
+Data/GFD/US_census_track/census_track_pop_dura_sum.qmd
+Data/GFD/US_census_track/census_track_pop_dura_sum.shp
+Data/GFD/US_census_track/census_track_pop_dura_sum.shx
+Data/GFD/US_census_track/census_track_pop_dura_sum.xlsx
+Data/GFD/US_census_track/census_track_pop_GHSL_sum.cpg
+Data/GFD/US_census_track/census_track_pop_GHSL_sum.dbf
+Data/GFD/US_census_track/census_track_pop_GHSL_sum.prj
+Data/GFD/US_census_track/census_track_pop_GHSL_sum.qmd
+Data/GFD/US_census_track/census_track_pop_GHSL_sum.shp
+Data/GFD/US_census_track/census_track_pop_GHSL_sum.shx
+Data/GFD/US_census_track/census_track_pop_ghsl_sum.xlsx
+Data/GFD/US_census_track/DFO_4444_From_20170216_to_20170303.tif
+Data/GFD/US_census_track/DFO_4444_From_20170216_to_20170303.tif.aux.xml
+Data/GFD/US_census_track/DFO_4444_from_ee.qgz
+Data/GFD/US_census_track/DFO_4444_properties.json
+Data/GFD/US_census_track/DFO_4444.qgz
+Data/GFD/US_census_track/DFO4444_cut_perm_water_250m.tif
+Data/GFD/US_census_track/DFO4444_cut_perm_water_250m.tif.aux.xml
+Data/GFD/US_census_track/DFO4444_cut_perm_water.tif
+Data/GFD/US_census_track/DFO4444_cut_perm_water.tif.aux.xml
+Data/GFD/US_census_track/LICENSE.txt
+Data/GFD/US_census_track/pop_250m.tif
+Data/GFD/US_census_track/pop_250m.tif.aux.xml
+Data/GFD/US_census_track/pop_duration_250m.tif
+Data/GFD/US_census_track/pop_duration_250m.tif.aux.xml
+Data/GFD/US_census_track/README_GFD.pdf
+Data/GFD/duration_pop_extent/census_duration.cpg
+Data/GFD/duration_pop_extent/census_duration.dbf
+Data/GFD/duration_pop_extent/census_duration.prj
+Data/GFD/duration_pop_extent/census_duration.qmd
+Data/GFD/duration_pop_extent/census_duration.shp
+Data/GFD/duration_pop_extent/census_duration.shx
+Data/GFD/duration_pop_extent/census_duration.xlsx
+Data/GFD/duration_pop_extent/census_flooded_cell_count.cpg
+Data/GFD/duration_pop_extent/census_flooded_cell_count.dbf
+Data/GFD/duration_pop_extent/census_flooded_cell_count.prj
+Data/GFD/duration_pop_extent/census_flooded_cell_count.qmd
+Data/GFD/duration_pop_extent/census_flooded_cell_count.shp
+Data/GFD/duration_pop_extent/census_flooded_cell_count.shx
+Data/GFD/duration_pop_extent/census_flooded_cell_count.xlsx
+Data/GFD/duration_pop_extent/census_flooded_pop.cpg
+Data/GFD/duration_pop_extent/census_flooded_pop.dbf
+Data/GFD/duration_pop_extent/census_flooded_pop.prj
+Data/GFD/duration_pop_extent/census_flooded_pop.qmd
+Data/GFD/duration_pop_extent/census_flooded_pop.shp
+Data/GFD/duration_pop_extent/census_flooded_pop.shx
+Data/GFD/duration_pop_extent/census_flooded_pop.xlsx
+Data/GFD/duration_pop_extent/census_pop_duration.cpg
+Data/GFD/duration_pop_extent/census_pop_duration.dbf
+Data/GFD/duration_pop_extent/census_pop_duration.prj
+Data/GFD/duration_pop_extent/census_pop_duration.qmd
+Data/GFD/duration_pop_extent/census_pop_duration.shp
+Data/GFD/duration_pop_extent/census_pop_duration.shx
+Data/GFD/duration_pop_extent/census_pop_duration.xlsx
+Data/GFD/duration_pop_extent/census_pop.cpg
+Data/GFD/duration_pop_extent/census_pop.dbf
+Data/GFD/duration_pop_extent/census_pop.prj
+Data/GFD/duration_pop_extent/census_pop.qmd
+Data/GFD/duration_pop_extent/census_pop.shp
+Data/GFD/duration_pop_extent/census_pop.shx
+Data/GFD/duration_pop_extent/census_pop.xlsx
+Data/GFD/duration_pop_extent/flood_duration_4444.tif
+Data/GFD/duration_pop_extent/flooded_4444.tif
+Data/GFD/duration_pop_extent/pop_4444.tif
+Data/GFD/duration_pop_extent/pop_4444.tif.aux.xml
+Data/GFD/duration_pop_extent/pop_duration_4444.tif
+Data/GFD/duration_pop_extent/pop_flooded_4444.tif
+Data/Global/CLASS.xlsx
+Data/Global/EMDAT_world_duration.xlsx
+Data/US socio-economic/GHSL_CA_250m.tif
+Data/US socio-economic/GHSL_CA_250m.tif.aux.xml
+Data/US socio-economic/GHSL_CA.tif
+Data/US socio-economic/GHSL_CA.tif.aux.xml
+Data/US socio-economic/income-age-race-gender.xlsx
+Data/US socio-economic/productDownload_2023-12-28T060416.zip
+Data/US socio-economic/productDownload_2023-12-28T061253.zip
+Data/US socio-economic/Income/ACSST5Y2017.S1701-Column-Metadata.csv
+Data/US socio-economic/Income/ACSST5Y2017.S1701-Data.csv
+Data/US socio-economic/Income/ACSST5Y2017.S1701-Table-Notes.txt
+Data/US socio-economic/Income/ACSST5Y2017.S1702-Column-Metadata.csv
+Data/US socio-economic/Income/ACSST5Y2017.S1702-Data.csv
+Data/US socio-economic/Income/ACSST5Y2017.S1702-Table-Notes.txt
+Data/US socio-economic/Income/ACSST5Y2017.S1901-Column-Metadata.csv
+Data/US socio-economic/Income/ACSST5Y2017.S1901-Data.csv
+Data/US socio-economic/Income/ACSST5Y2017.S1901-Table-Notes.txt
+Data/US socio-economic/Income/ACSST5Y2017.S1902-Column-Metadata.csv
+Data/US socio-economic/Income/ACSST5Y2017.S1902-Data.csv
+Data/US socio-economic/Income/ACSST5Y2017.S1902-Table-Notes.txt
+Data/US socio-economic/Income/ACSST5Y2017.S1903-Column-Metadata.csv
+Data/US socio-economic/Income/ACSST5Y2017.S1903-Data.csv
+Data/US socio-economic/Income/ACSST5Y2017.S1903-Table-Notes.txt
+Data/US socio-economic/age race/ACSDP1Y2017.DP05-Column-Metadata.csv
+Data/US socio-economic/age race/ACSDP1Y2017.DP05-Data.csv
+Data/US socio-economic/age race/ACSDP1Y2017.DP05-Table-Notes.txt
+Data/US socio-economic/age race/ACSDP5Y2017.DP05-Column-Metadata.csv
+Data/US socio-economic/age race/ACSDP5Y2017.DP05-Data.csv
+Data/US socio-economic/age race/ACSDP5Y2017.DP05-Table-Notes.txt
+Data/US4444/census_duration.xlsx
+Data/US4444/census_flood_socio-eco.csv
+Data/US4444/census_flood_socio-eco.xlsx
+Data/US4444/census_flooded_cell_count.xlsx
+Data/US4444/census_flooded_pop.xlsx
+Data/US4444/census_pop_duration.xlsx
+Data/US4444/census_pop.xlsx
+Data/US4444/income-age-race-gender.xlsx
+Data/buff/bgd2013incpov.tif
+Data/buff/DFO_2507_From_20040620_to_20041007/DFO_2507_From_20040620_to_20041007.tif
+Data/buff/DFO_2507_From_20040620_to_20041007/DFO_2507_From_20040620_to_20041007.tif.aux.xml
+Data/buff/DFO_2507_From_20040620_to_20041007/DFO_2507_properties.json
+Data/buff/DFO_2507_From_20040620_to_20041007/LICENSE.txt
+Data/buff/DFO_2507_From_20040620_to_20041007/README_GFD.pdf
+Data/gsap-maps-poverty/GSAP2.cpg
+Data/gsap-maps-poverty/GSAP2.dbf
+Data/gsap-maps-poverty/GSAP2.prj
+Data/gsap-maps-poverty/GSAP2.shp
+Data/gsap-maps-poverty/GSAP2.shx
+Data/gsap-maps-poverty/GSAP数据介绍.docx
+Data/relative-wealth-index-april-2021/AGO_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/ARG_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/BDI_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/BEN_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/BFA_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/BGD_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/BLZ_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/BOL_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/BRA_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/BTN_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/BWA_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/CAF_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/CIV_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/CMR_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/COD_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/COG_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/COL_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/COM_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/CPV_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/CRI_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/DJI_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/DMA_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/DOM_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/DZA_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/ECU_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/ERI_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/ETH_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/GAB_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/GHA_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/GIN_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/GMB_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/GNB_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/GNQ_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/GRD_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/GTM_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/GUY_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/HND_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/HTI_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/IDN_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/IND_PAK_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/JAM_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/JOR_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/KAZ_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/KEN_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/KGZ_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/KHM_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/LAO_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/LBR_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/LBY_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/LCA_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/LKA_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/LSO_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/MDG_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/MDV_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/MEX_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/MLI_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/MNG_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/MOZ_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/MRT_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/MUS_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/MWI_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/MYS_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/NAM_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/NER_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/NGA_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/NIC_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/NPL_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/PER_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/PHL_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/PRY_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/RWA_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/SEN_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/SLE_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/SLV_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/STP_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/SUR_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/SWZ_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/TCD_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/TGO_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/THA_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/TJK_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/TKM_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/TLS_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/TUN_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/TZA_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/UGA_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/UZB_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/VCT_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/VNM_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/ZAF_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/ZMB_relative_wealth_index.csv
+Data/relative-wealth-index-april-2021/ZWE_relative_wealth_index.csv
+Results_PPT/Duration_inequality_v1.0.pptx
+Results_PPT/Duration_inequality_v1.1.pptx
+Results_PPT/Duration_inequality_v1.2.pptx
+Results_PPT/Duration_inequality_v2.0.pptx
+Results_PPT/Duration_inequality_v2.1.pptx

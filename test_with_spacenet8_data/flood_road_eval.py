@@ -13,6 +13,8 @@ import torch.nn as nn
 import models.pytorch_zoo.unet as unet
 from sn8dataset import SN8Dataset
 from models.other.unet import UNetSiamese
+from models.other.siamunetdif import SiamUnet_diff
+from models.other.siamnestedunet import SNUNet_ECAM
 from utils.utils import write_geotiff
 
 def parse_args():
@@ -88,6 +90,8 @@ def make_prediction_png(image, postimage, gt, prediction, save_figure_filename):
                 
     
 models = {
+    'pseudo_resnet18_siamese': unet.Resnet18_pseudosiamese_upsample,
+    'resnet18_siamese': unet.Resnet18_siamese_upsample,
     'resnet34_siamese': unet.Resnet34_siamese_upsample,
     'resnet34': unet.Resnet34_upsample,
     'resnet50': unet.Resnet50_upsample,
@@ -97,7 +101,9 @@ models = {
     'seresnet152': unet.SeResnet152_upsample,
     'seresnext50': unet.SeResnext50_32x4d_upsample,
     'seresnext101': unet.SeResnext101_32x4d_upsample,
-    'unet_siamese': UNetSiamese
+    'unet_siamese':UNetSiamese,
+    'unet_siamese_dif':SiamUnet_diff,
+    'nestedunet_siamese':SNUNet_ECAM
 }
 
 if __name__ == "__main__":
@@ -114,7 +120,7 @@ if __name__ == "__main__":
     model_name = "pseudo_resnet18_siamese"
     save_fig_dir = "E:\\code\\Py_workplace\\spacenet8\\Data\\eval_results\\png_file"
     save_preds_dir = "E:\\code\\Py_workplace\\spacenet8\\Data\\eval_results\\tif_file"
-    gpu = -1
+    gpu = 0
 
     num_classes = 3
     img_size = (1300,1300)
